@@ -1,0 +1,35 @@
+{
+  "canisters": {
+    "Minty": {
+      "main": "src/Minty/main.mo",
+      "type": "motoko"
+    },
+    "Minty_assets": {
+      "dependencies": [
+        "Minty"
+      ],
+      "frontend": {
+        "entrypoint": "src/Minty_assets/src/index.html"
+      },
+      "source": [
+        "src/Minty_assets/assets",
+        "dist/Minty_assets/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "dfx": "0.9.2",
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    }
+  },
+  "version": 1
+}
