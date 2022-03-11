@@ -95,7 +95,7 @@ actor class DRC721(_name : Text, _symbol : Text){
 
 // token minting - Implementation
 
-private func _mint( to : Principal, tokenPk : Nat, uri : Test ) : (){
+private func _mint( to : Principal, tokenPk : Nat, uri : Text ) : (){
   assert not _exists(tokenPk);
 
   _incrementbalance(to);
