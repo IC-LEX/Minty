@@ -108,14 +108,25 @@ private _incrementbalance(to){
 
 }
 
+
+
 // Construct the registry of owned tokens
 //Array representationa for purpose of orthogonal presistence (must be Stable Type)
 private stable var ownersEntries : [(T_721.TokenId, Principal)] = [];
+//tokenURIs
+private stable var tokenURIsEntries : [(T_721.TokenId, Text)] = [];
+//balances
+private stable var balancesEntries : [(Principal, Nat)] = [];
 
+
+//Owners - internal representation for convenience
 private let owners : HashMap.HashMap<T_721.TokenId, Principal> = HashMap.fromIter<T_721.TokenId, Principal>(ownersEntries.vals(), 10, Principal.equal, Hash.hash);
 
-//owners-put(tokenPk, to)
-//tokenURIs(tokenPk, iri)
+//tokenURIs - internal representation for convenience
+private let tokenURIs : HashMap.HashMap<T_721.TokenId, Text> = HashMap.fromIter<T_721.TokenId, Text>(tokenURIsEntries.vals(), 10, Nat.equal, Hash.hash);
+
+//balances - internal representation for convenience
+private let balances : HashMap.HashMap<Principal, Nat> = HashMap.fromIter<Principal, Nat>(balancesEntries.vals(), 10, Principal.equal, Principal.hash);
 
 private func _mint( to : Principal, tokenPk : Nat, uri : Text ) : (){
   assert not _exists(tokenPk);
