@@ -7,28 +7,28 @@
 // and processing flows.
 
 // 3) Sketch out declarations and signatures of major components:
-//     a) Managing accounts, principals, etc.
-//     - id msg content for canister interaction, auth,
-//       ownership, (witness?) etc.
-
-//     b) NFT types factored into modules to import as needed
+//     a) NFT types factored into modules to import as needed
 //         depending on applicable standard.  (DRC 721, )
 //         DRC 721 recommended for use in project
-            
-//     c) Token content management - what does it contain, is it
-//        extensible?
+//         
+//         Token content management - what does it contain,
+//         is it extensible? etc.
 
-//     c) Core minting rountines - ideally polymorphic and/or
+//     b) Core minting rountines - ideally polymorphic and/or
 //       composable as where reuse and specialization across
 //        standards can be maintained.
 
-//     d) A minting_utils module with basic supplementary
-//         routines tailored to requirements of main modules/operations
+//     c) Managing accounts, principals, etc.
+//     - id msg content for canister interaction, auth,
+//       ownership, (witness?) etc.
+
+//     d) A utils module?  supplementary routines tailored to
+//        requirements of main modules/operations.
 
 //     e) Incrementally deploy web frontend as needed
-
-//     f) familiarize with packaging (vessel) and config - review
-//       changes for incorporating new frameworks and toolchain
+//        - try other frameworks and package managers.
+//        - familiarize with packaging (vessel) and config
+//        - review changes for incorporating new frameworks and toolchain
 
 //Intermediate Additions:
 // - Integrate a Token Transaction into the project
@@ -37,14 +37,76 @@
 //Base imports
 import Principal "mo:base/Principal";
 
-//DIP 721 Types
-module {
-  public type TokenAddress = Principal;
-  public type TokenId = Nat;
+//Import Token standard structures - DIP 721 Types
+import T_721 "dip721_types";
+// Other Token types
+
+// Define the Token API
+actor class DRC721(_name : Text, _symbol : Test){
+//Stable means that system pre and post upgrade calls will
+//persist across canister upgrades
+
+  private stable var tokenPk : Nat = 0;
+
+  private stable var owner_tokens : [(T_721.TokenId, Principal)] = [];
+  private stable var owner_balances : [(Principal, Nat)] = [];
+  private stable var tokens_content : [(T_721.TokenId, Text)]; = [];
+
+//Using Hashmap.Hashmap class <Key , Value> pairs that will grow automatically and grow
+// storage, as needed - start with whatever size seems good, including 0
+// `get`, `set`, `delete`, `count` and `entries`
+// as with the `Buffer` class, no array allocation happens until the first `set`.
+
+// Hashmap clone
+// Clone from any iterator of key-value pairs
+  // public func fromIter<K, V>(
+  //   iter : Iter.Iter<(K, V)>,
+  //   initCapacity : Nat,
+  //   keyEq : (K, K) -> Bool,
+  //   keyHash : K -> Hash.Hash
+  // ) : HashMap<K, V> {
+  //   let h = HashMap<K, V>(initCapacity, keyEq, keyHash);
+  //   for ((k, v) in iter) {
+  //     h.put(k, v);
+  //   };
+  //   h
+  // };
+
+// Hashmap map
+// public func map<K, V1, V2>(
+//     h : HashMap<K, V1>,
+//     keyEq : (K, K) -> Bool,
+//     keyHash : K -> Hash.Hash,
+//     mapFn : (K, V1) -> V2,
+//   ) : HashMap<K, V2> {
+//     let h2 = HashMap<K, V2>(h.size(), keyEq, keyHash);
+//     for ((k, v1) in h.entries()) {
+//       let v2 = mapFn(k, v1);
+//       h2.put(k, v2);
+//     };
+//     h2
+//   };
+
+// New idea:   public shared({caller}) func(....) - for receiving client owned data 
+// Encouraged to apply switch/case stmts to handle all cases of request handling
+
+// switch <exp> { (case <pat> <block-or-exp>;)+ } wth a type T provided
+
+
+// token minting - Implementation
+// token minting - API/Interface
+
+
+
+// token burning - Implementation
+// token burning - API/ Interface
+
+
+
+
+
+
 };
-
-// Define the Token Structure
-
 
 
 
