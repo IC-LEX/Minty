@@ -106,8 +106,15 @@ private func _exists(tokenPk : Nat) : Bool{
 };
 
 // 
-private _incrementbalance(to){
-
+private func _incrementbalance(address : Principal){
+    switch (){
+      case(){
+        ;
+      };
+      case null {
+        ;
+      };
+    };
 };
 
 
@@ -130,9 +137,8 @@ private let tokenURIs : HashMap.HashMap<T_721.TokenId, Text> = HashMap.fromIter<
 //balances - internal representation for convenience
 private let balances : HashMap.HashMap<Principal, Nat> = HashMap.fromIter<Principal, Nat>(balancesEntries.vals(), 10, Principal.equal, Principal.hash);
 
-private func _mint( to : Principal, tokenPk : Nat, uri : Text ) : (){
-  assert not _exists(tokenPk);
-
+private func _mint( to : Principal, tokenId : Nat, uri : Text ) : (){
+  assert not _exists(TokenId);
   _incrementbalance(to);
   owners.put(tokenId, to);
   tokenURIs.put(tokenPk, uri);
@@ -140,7 +146,6 @@ private func _mint( to : Principal, tokenPk : Nat, uri : Text ) : (){
 
 
 // token minting - API/Interface
-
 public shared ({caller}) func mint(uri : Text) : async Nat{
     tokenPk +=1;
     _mint(caller, tokenPk, uri);
