@@ -98,21 +98,14 @@ actor class DRC721(_name : Text, _symbol : Text){
 
 // token minting - Implementation
 
-
-// Does a token exist at this index in the owner registry
-// When minted - tokens are registered with an owner
-private func _exists(tokenPk : Nat) : Bool{
-  return Option.isSome(owners.get(tokenId));
-};
-
 // 
 private func _incrementbalance(address : Principal){
     switch (){
       case(){
-        ;
+        //  ;
       };
       case null {
-        ;
+        // ;
       };
     };
 };
@@ -136,6 +129,14 @@ private let tokenURIs : HashMap.HashMap<T_721.TokenId, Text> = HashMap.fromIter<
 
 //balances - internal representation for convenience
 private let balances : HashMap.HashMap<Principal, Nat> = HashMap.fromIter<Principal, Nat>(balancesEntries.vals(), 10, Principal.equal, Principal.hash);
+
+// Does a token exist at this index in the owner registry
+// When minted - tokens are registered with an owner
+private func _exists(tokenPk : Nat) : Bool{
+  return Option.isSome(owners.get(tokenId));
+};
+
+
 
 private func _mint( to : Principal, tokenId : Nat, uri : Text ) : (){
   assert not _exists(TokenId);
