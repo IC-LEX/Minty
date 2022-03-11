@@ -35,6 +35,7 @@
 // - Add some kind of Token, Ownership or other relates listings
 
 //Base imports
+import Bool "mo:base/Bool";
 import Principal "mo:base/Principal";
 import Option "mo:base/Option";
 import HashMap "mo:base/HashMap";
