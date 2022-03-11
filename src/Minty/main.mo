@@ -100,12 +100,12 @@ actor class DRC721(_name : Text, _symbol : Text){
 
 // 
 private func _incrementbalance(address : Principal){
-    switch (){
-      case(){
-        //  ;
+    switch (balances.get(address)){
+      case(?v){
+        balances.put(address, v + 1); // Adding to balance 
       };
       case null {
-        // ;
+        balances.put(address, 1); // Starting balance
       };
     };
 };
