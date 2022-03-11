@@ -1,4 +1,4 @@
-
+//TO DO:
 // 1) Organize file structure, actor, module, type, class,
 //structure factorings as look most manageable / convenient
 // starting point from various examples cited
@@ -106,7 +106,7 @@ private func _exists(tokenPk : Nat) : Bool{
 // 
 private _incrementbalance(to){
 
-}
+};
 
 
 
