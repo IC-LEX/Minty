@@ -39,6 +39,10 @@ import Bool "mo:base/Bool";
 import Principal "mo:base/Principal";
 import Option "mo:base/Option";
 import HashMap "mo:base/HashMap";
+import Hash "mo:base/Hash";
+import Array "mo:base/Array";
+import Iter "mo:base/Iter";
+
 
 //Import Token standard structures - DIP 721 Types
 import T_721 "dip721_types";
