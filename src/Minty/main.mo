@@ -126,7 +126,7 @@ private stable var balancesEntries : [(Principal, Nat)] = [];
 
 
 //Owners - internal representation for convenience
-private let owners : HashMap.HashMap<T_721.TokenId, Principal> = HashMap.fromIter<T_721.TokenId, Principal>(ownersEntries.vals(), 10, Principal.equal, Hash.hash);
+private let owners : HashMap.HashMap<T_721.TokenId, Principal> = HashMap.fromIter<T_721.TokenId, Principal>(ownersEntries.vals(), 10, Nat.equal, Hash.hash);
 
 //tokenURIs - internal representation for convenience
 private let tokenURIs : HashMap.HashMap<T_721.TokenId, Text> = HashMap.fromIter<T_721.TokenId, Text>(tokenURIsEntries.vals(), 10, Nat.equal, Hash.hash);
