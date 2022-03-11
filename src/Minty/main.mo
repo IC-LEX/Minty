@@ -42,7 +42,7 @@ import T_721 "dip721_types";
 // Other Token types
 
 // Define the Token API
-actor class DRC721(_name : Text, _symbol : Test){
+actor class DRC721(_name : Text, _symbol : Text){
 //Stable means that system pre and post upgrade calls will
 //persist across canister upgrades
 
