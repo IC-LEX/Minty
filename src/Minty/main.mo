@@ -36,6 +36,7 @@
 
 //Base imports
 import Principal "mo:base/Principal";
+import Option "mo:base/Option";
 
 //Import Token standard structures - DIP 721 Types
 import T_721 "dip721_types";
@@ -94,6 +95,27 @@ actor class DRC721(_name : Text, _symbol : Text){
 
 
 // token minting - Implementation
+
+
+// Does a token exist at this index in the owner registry
+// When minted - tokens are registered with an owner
+private func _exists(tokenPk : Nat) : Bool{
+  return Option.isSome(owners.get(tokenId));
+};
+
+// 
+private _incrementbalance(to){
+
+}
+
+// Construct the registry of owned tokens
+//Array representationa for purpose of orthogonal presistence (must be Stable Type)
+private stable var ownersEntries : [(T_721.TokenId, Principal)] = [];
+
+private let owners : HashMap.HashMap<T_721.TokenId, Principal> = HashMap.fromIter<T_721.TokenId, Principal>(ownersEntries.vals(), 10, Principal.equal, Hash.hash);
+
+//owners-put(tokenPk, to)
+//tokenURIs(tokenPk, iri)
 
 private func _mint( to : Principal, tokenPk : Nat, uri : Text ) : (){
   assert not _exists(tokenPk);
