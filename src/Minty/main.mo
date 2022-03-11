@@ -136,17 +136,17 @@ private let balances : HashMap.HashMap<Principal, Nat> = HashMap.fromIter<Princi
 
 // Does a token exist at this index in the owner registry
 // When minted - tokens are registered with an owner
-private func _exists(tokenPk : Nat) : Bool{
+private func _exists(tokenId : Nat) : Bool{
   return Option.isSome(owners.get(tokenId));
 };
 
 
 
 private func _mint( to : Principal, tokenId : Nat, uri : Text ) : (){
-  assert not _exists(TokenId);
+  assert not _exists(tokenId);
   _incrementbalance(to);
   owners.put(tokenId, to);
-  tokenURIs.put(tokenPk, uri);
+  tokenURIs.put(tokenId, uri);
 };
 
 
