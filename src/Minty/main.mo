@@ -37,6 +37,7 @@
 //Base imports
 import Principal "mo:base/Principal";
 import Option "mo:base/Option";
+import HashMap "mo:base/HashMap";
 
 //Import Token standard structures - DIP 721 Types
 import T_721 "dip721_types";
