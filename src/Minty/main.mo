@@ -94,16 +94,26 @@ actor class DRC721(_name : Text, _symbol : Test){
 
 
 // token minting - Implementation
+
+private func _mint( to : Principal, tokenPk : Nat, uri : Test ) : (){
+  assert not _exists(tokenPk);
+
+  _incrementbalance(to);
+  owners.put(tokenId, to);
+  tokenURIs.put(tokenPk, uri);
+};
+
+
 // token minting - API/Interface
 
-
+public shared ({caller}) func mint(uri : Text) : async Nat{
+    tokenPk +=1;
+    _mint(caller, tokenPk, uri);
+    return tokenPk;
+};
 
 // token burning - Implementation
 // token burning - API/ Interface
-
-
-
-
 
 
 };
