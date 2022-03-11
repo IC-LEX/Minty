@@ -42,7 +42,7 @@ import HashMap "mo:base/HashMap";
 import Hash "mo:base/Hash";
 import Array "mo:base/Array";
 import Iter "mo:base/Iter";
-
+import Nat "mo:base/Nat";
 
 //Import Token standard structures - DIP 721 Types
 import T_721 "dip721_types";
