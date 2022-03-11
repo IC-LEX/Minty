@@ -50,7 +50,7 @@ actor class DRC721(_name : Text, _symbol : Test){
 
   private stable var owner_tokens : [(T_721.TokenId, Principal)] = [];
   private stable var owner_balances : [(Principal, Nat)] = [];
-  private stable var tokens_content : [(T_721.TokenId, Text)]; = [];
+  private stable var tokens_content : [(T_721.TokenId, Text)] = [];
 
 //Using Hashmap.Hashmap class <Key , Value> pairs that will grow automatically and grow
 // storage, as needed - start with whatever size seems good, including 0
